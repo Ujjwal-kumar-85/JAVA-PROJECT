@@ -1,0 +1,208 @@
+import java.sql.*;
+import java.util.Scanner;
+
+/*************************** DATABASE CONNECTION ****************************/
+class DBConnection {
+    public static Connection getConnection() throws SQLException {
+        String url = "jdbc:mysql://localhost:3306/employee_management_system";
+        String user = "root"; // change if different
+        String password = ""; // set your MySQL root password
+
+        return DriverManager.getConnection(url, user, password);
+    }
+}
+
+/*************************** MENU CLASS ****************************/
+class MainMenu {
+    public void menu() {
+        System.out.println("\n\t*******************************************");
+        System.out.println("\t\tEMPLOYEE MANAGEMENT SYSTEM");
+        System.out.println("\t*******************************************");
+        System.out.println("\nPress 1 : To Add Employee");
+        System.out.println("Press 2 : To View Employee");
+        System.out.println("Press 3 : To Remove Employee");
+        System.out.println("Press 4 : To Update Employee");
+        System.out.println("Press 5 : To Exit\n");
+    }
+}
+
+/*************************** ADD EMPLOYEE ****************************/
+class Employee_Add {
+    public void createRecord() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Employee ID: ");
+        String empId = sc.nextLine();
+
+        System.out.print("Enter Name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter Father's Name: ");
+        String fatherName = sc.nextLine();
+
+        System.out.print("Enter Email: ");
+        String email = sc.nextLine();
+
+        System.out.print("Enter Contact: ");
+        String contact = sc.nextLine();
+
+        System.out.print("Enter Position: ");
+        String position = sc.nextLine();
+
+        System.out.print("Enter Salary: ");
+        double salary = Double.parseDouble(sc.nextLine());
+
+        try (Connection con = DBConnection.getConnection()) {
+            String sql = "INSERT INTO employees (employee_id, name, father_name, email, contact, position, salary) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, empId);
+            ps.setString(2, name);
+            ps.setString(3, fatherName);
+            ps.setString(4, email);
+            ps.setString(5, contact);
+            ps.setString(6, position);
+            ps.setDouble(7, salary);
+
+            ps.executeUpdate();
+            System.out.println("\nEmployee added successfully.");
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+
+/*************************** SHOW EMPLOYEE ****************************/
+class Employee_Show {
+    public void viewRecord(String employeeId) {
+        try (Connection con = DBConnection.getConnection()) {
+            String sql = "SELECT * FROM employees WHERE employee_id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, employeeId);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                System.out.println("\nEmployee ID       : " + rs.getString("employee_id"));
+                System.out.println("Name              : " + rs.getString("name"));
+                System.out.println("Father's Name     : " + rs.getString("father_name"));
+                System.out.println("Email             : " + rs.getString("email"));
+                System.out.println("Contact           : " + rs.getString("contact"));
+                System.out.println("Position          : " + rs.getString("position"));
+                System.out.println("Salary            : " + rs.getDouble("salary"));
+                System.out.println("Created At        : " + rs.getTimestamp("created_at"));
+            } else {
+                System.out.println("\nNo employee found with ID: " + employeeId);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+
+/*************************** REMOVE EMPLOYEE ****************************/
+class Employee_Remove {
+    public void removeRecord(String employeeId) {
+        try (Connection con = DBConnection.getConnection()) {
+            String sql = "DELETE FROM employees WHERE employee_id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, employeeId);
+
+            int rows = ps.executeUpdate();
+            if (rows > 0) {
+                System.out.println("\nEmployee removed successfully.");
+            } else {
+                System.out.println("\nEmployee ID not found.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+
+/*************************** UPDATE EMPLOYEE ****************************/
+class Employee_Update {
+    public void updateRecord(String employeeId, String column, String newValue) {
+        String sql = "UPDATE employees SET " + column + " = ?, updated_at = NOW() WHERE employee_id = ?";
+
+        try (Connection con = DBConnection.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, newValue);
+            ps.setString(2, employeeId);
+
+            int rows = ps.executeUpdate();
+            if (rows > 0) {
+                System.out.println("\nEmployee information updated successfully.");
+            } else {
+                System.out.println("\nEmployee ID not found.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+
+/*************************** EXIT CLASS ****************************/
+class CodeExit {
+    public void out() {
+        System.out.println("\n*****************************************");
+        System.out.println("Thank you for using the EMS.");
+        System.out.println("*****************************************");
+        System.exit(0);
+    }
+}
+
+/*************************** MAIN CLASS ****************************/
+public class EmployeeManagementSystem {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        MainMenu menu = new MainMenu();
+        Employee_Add empAdd = new Employee_Add();
+        Employee_Show empShow = new Employee_Show();
+        Employee_Remove empRemove = new Employee_Remove();
+        Employee_Update empUpdate = new Employee_Update();
+        CodeExit exit = new CodeExit();
+
+        while (true) {
+            menu.menu();
+            System.out.print("Enter choice: ");
+            String input = sc.nextLine();
+
+            switch (input) {
+                case "1":
+                    empAdd.createRecord();
+                    break;
+
+                case "2":
+                    System.out.print("Enter Employee ID: ");
+                    String viewId = sc.nextLine();
+                    empShow.viewRecord(viewId);
+                    break;
+
+                case "3":
+                    System.out.print("Enter Employee ID to remove: ");
+                    String removeId = sc.nextLine();
+                    empRemove.removeRecord(removeId);
+                    break;
+
+                case "4":
+                    System.out.print("Enter Employee ID to update: ");
+                    String updateId = sc.nextLine();
+                    System.out.print("Enter field to update (name, father_name, email, contact, position, salary): ");
+                    String field = sc.nextLine();
+                    System.out.print("Enter new value: ");
+                    String value = sc.nextLine();
+                    empUpdate.updateRecord(updateId, field, value);
+                    break;
+
+                case "5":
+                    exit.out();
+                    break;
+
+                default:
+                    System.out.println("Invalid choice. Try again.");
+            }
+
+            System.out.print("\nPress Enter to continue...");
+            sc.nextLine();
+        }
+    }
+}

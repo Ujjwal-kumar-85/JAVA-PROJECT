@@ -1,0 +1,7 @@
+Employee ID       : 98765
+Employee Name     : Vikash kumar
+Father's Name     : Jhuran kamat
+Employee Contact  : 6205842335
+Email Information : Vikash1234@gmail.com
+Employee Position : staff
+Employee Salary   : 35000

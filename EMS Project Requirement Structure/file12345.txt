@@ -1,0 +1,7 @@
+Employee ID:12345
+Employee Name     :Ujjwal kumar
+Father's Name     :Amresh kumar
+Employee Contact  :9142017183
+Email Information :uk12345@gmail.com
+Employee position :manager
+Employee Salary   :31000

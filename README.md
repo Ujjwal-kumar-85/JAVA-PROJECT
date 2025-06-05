@@ -8,12 +8,14 @@
 
 
 Why EMS?
+
 Because managing employee data should be easy, error-free, and maintainable — without heavy databases or complicated setups.
 
 🚀 Project Overview
 ✨ Key Features
 ➕ Add Employee:
 Capture complete employee info — including ID, Name, Father’s Name, Email, Position, Contact Number, and Salary — with built-in validation for data accuracy.
+
 
 🔍 View Employee Details:
 
@@ -35,6 +37,7 @@ Includes checks for valid email format, exact 10-digit phone numbers, and numeri
 
 Uses plain text files in a dedicated folder (data/), making the system lightweight and portable — no database required!
 
+
 🖥️ Friendly Console Menu:
 
 A clear, interactive menu guides users smoothly through all operations.
@@ -46,6 +49,7 @@ The system is broken down into multiple classes handling specific tasks — vali
 📂 Efficient File I/O:
 
 Reads, writes, updates, and deletes employee data seamlessly using Java’s file handling mechanisms.
+
 
 ⚙️ Error Handling & Robustness:
 
@@ -76,6 +80,7 @@ Select your desired option from the menu by typing the corresponding number.
 Follow the on-screen instructions to add, view, update, or remove employee details.
 
 Press 5 to exit the application.
+
 
 🔮 Future Improvements
 

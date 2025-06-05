@@ -1,4 +1,4 @@
-🧑‍💼 Employee Management System (EMS) --:
+                  🧑‍💼 Employee Management System (EMS) --:
 
 📋 Project Description:
       
@@ -6,8 +6,8 @@
    This project focuses on providing a robust, user-friendly, and efficient way to handle everyday employee operations such as adding new employees, viewing details, updating 
    records, and removing employees, all through an intuitive command-line interface.
 
-Why EMS?
 
+Why EMS?
 Because managing employee data should be easy, error-free, and maintainable — without heavy databases or complicated setups.
 
 🚀 Project Overview

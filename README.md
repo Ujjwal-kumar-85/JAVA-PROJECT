@@ -61,17 +61,27 @@ Graceful management of invalid inputs and system errors ensures smooth user expe
 
 Designed with future growth in mind — easy to add new features or switch to database-backed storage.
 
-🗂️ Project Structure
-File/Class Name	Responsibility
-MainMenu	Displays main navigation menu
-ValidationUtils	Contains input validation methods
-Employee	Employee data model and input logic
-EmployeeAdd	Adding new employee details
-EmployeeShow	Displaying employee information
-EmployeeUpdate	Updating existing employee records
-EmployeeRemove	Removing employee records
-CodeExit	Graceful exit from the application
-EmployeeManagementSystemUpdated	Main class coordinating all components
+🗂️ Project Structure--:
+
+File/Class Name	Responsibility.
+
+MainMenu	Displays main navigation menu.
+
+ValidationUtils	Contains input validation methods.
+
+Employee	Employee data model and input logic.
+
+EmployeeAdd	Adding new employee details.
+
+EmployeeShow	Displaying employee information.
+
+EmployeeUpdate	Updating existing employee records.
+
+EmployeeRemove	Removing employee records.
+
+CodeExit	Graceful exit from the application.
+
+EmployeeManagementSystemUpdated	Main class coordinating all components.
 
 
 🧑‍💻 How to Use

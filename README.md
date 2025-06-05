@@ -11,6 +11,7 @@ Why EMS?
 Because managing employee data should be easy, error-free, and maintainable — without heavy databases or complicated setups.
 
 
+
 🚀 Project Overview
 
    ✨ Key Features
@@ -61,6 +62,7 @@ Graceful management of invalid inputs and system errors ensures smooth user expe
 
 Designed with future growth in mind — easy to add new features or switch to database-backed storage.
 
+
 🗂️ Project Structure--:
 
 File/Class Name	Responsibility.
@@ -84,6 +86,7 @@ CodeExit	Graceful exit from the application.
 EmployeeManagementSystemUpdated	Main class coordinating all components.
 
 
+
 🧑‍💻 How to Use
 
 Run the program (EmployeeManagementSystemUpdated.java).
@@ -93,6 +96,7 @@ Select your desired option from the menu by typing the corresponding number.
 Follow the on-screen instructions to add, view, update, or remove employee details.
 
 Press 5 to exit the application.
+
 
 
 🔮 Future Improvements

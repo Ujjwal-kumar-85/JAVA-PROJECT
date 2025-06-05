@@ -1,5 +1,6 @@
 🧑‍💼 Employee Management System (EMS) 
-📋 Project Description
+      📋 Project Description
+      
 Welcome to the Employee Management System (EMS) — a simple yet powerful Java console application designed to streamline employee record management for small and medium businesses.
 This project focuses on providing a robust, user-friendly, and efficient way to handle everyday employee operations such as adding new employees, viewing details, updating records, and removing employees, all through an intuitive command-line interface.
 

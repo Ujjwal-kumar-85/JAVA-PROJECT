@@ -12,7 +12,9 @@ Why EMS?
 Because managing employee data should be easy, error-free, and maintainable — without heavy databases or complicated setups.
 
 🚀 Project Overview
-✨ Key Features
+
+   ✨ Key Features
+
 ➕ Add Employee:
 Capture complete employee info — including ID, Name, Father’s Name, Email, Position, Contact Number, and Salary — with built-in validation for data accuracy.
 
@@ -21,7 +23,7 @@ Capture complete employee info — including ID, Name, Father’s Name, Email, P
 
 Retrieve employee information quickly by entering their unique Employee ID.
 
-✏️ Update Employee Info:
+ ✏️ Update Employee Info:
 
 Modify existing details safely with step-by-step prompts ensuring correct updates.
 
